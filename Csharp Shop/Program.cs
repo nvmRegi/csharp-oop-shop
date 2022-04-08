@@ -8,6 +8,7 @@ int nProdotti = 1;
 Prodotto[] arrayProdotti = new Prodotto[maxNumeroProdotti];
 
 Prodotto prodotto1 = new Prodotto("Panino al prosciutto", "Questa è la descrizione del mio primo prodotto" ,10, 22);
+arrayProdotti[0] = prodotto1;
 
 Console.WriteLine(prodotto1.getCodice());
 
@@ -15,6 +16,8 @@ prodotto1.stampaPrezzoBase();
 
 prodotto1.calcoloIva();
 prodotto1.stampaNomeEsteso();
+Console.WriteLine(arrayProdotti[0].nome);
+Console.WriteLine("");
 while (true)
 {
     Console.WriteLine("Scegli un'opzione: ");
@@ -55,9 +58,27 @@ while (true)
             else
             {
                 Console.WriteLine("Hai raggiunto il numero massimo di prodotti registrati");
+                Console.ReadKey();
+                Console.Clear();
             }
             break;
+        case 1:
+            if(nProdotti > 0)
+            {
+                stampaArray();
+                arrayProdotti[nProdotti] = null;
 
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("Non ci sono più prodotti da rimuovere!");
+                Console.ReadKey();
+                Console.Clear();
+            }
+
+            break;
 
 
     }
@@ -68,5 +89,12 @@ while (true)
 
 //funzioni
 
-//void aggiungiProdotto ()
+void stampaArray()
+{
+    Console.WriteLine("Verrà rimosso l'ultimo elemento della lista: ");
+    for(int i = 0; i < nProdotti + 1; i++)
+    {
+        Console.WriteLine(i + " - " + arrayProdotti[i].nome);
+    }
+}
 

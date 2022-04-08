@@ -69,5 +69,7 @@ namespace Csharp_Shop
             stampaPrezzoBase();
             calcoloIva();
         }
+
+
     }
 }
