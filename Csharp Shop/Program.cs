@@ -5,9 +5,9 @@ Console.WriteLine("BENVENUTI NEL MIO PROGRAMMA!\n");
 int maxNumeroProdotti = 5;
 int nProdotti = 1;
 
-string[] nomeProdotti = new string[maxNumeroProdotti];
+Prodotto[] arrayProdotti = new Prodotto[maxNumeroProdotti];
 
-Prodotto prodotto1 = new Prodotto("Panino al prosciutto", 10, 22);
+Prodotto prodotto1 = new Prodotto("Panino al prosciutto", "Questa è la descrizione del mio primo prodotto" ,10, 22);
 
 Console.WriteLine(prodotto1.getCodice());
 
@@ -23,7 +23,7 @@ while (true)
     Console.WriteLine("2 - Visualizza i prodotti registrati");
     Console.WriteLine("3 - Esci dal programma");
 
-    Console.WriteLine("\nScelta: ");
+    Console.Write("\nScelta: ");
     int risposta = Convert.ToInt32(Console.ReadLine());
 
     Console.Clear();
@@ -33,22 +33,30 @@ while (true)
         case 0:
             if(nProdotti < maxNumeroProdotti)
             {
-                Console.WriteLine("Inserisci il nome: ");
+                nProdotti++;
+
+                Console.Write("Inserisci il nome: ");
                 string nomeProdotto = Console.ReadLine();
-                Console.WriteLine("Inserisci una desceizione: ");
+                Console.Write("Inserisci una descrizione: ");
                 string descrizioneProdotto = Console.ReadLine();
-                Console.WriteLine("Inserisci il prezzo: ");
+                Console.Write("Inserisci il prezzo: ");
                 double prezzoProdotto = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Inserisci l'IVA: ");
+                Console.Write("Inserisci l'IVA: ");
                 double ivaProdotto = Convert.ToDouble(Console.ReadLine());
 
+                Prodotto prodotto = new Prodotto(nomeProdotto, descrizioneProdotto, prezzoProdotto, ivaProdotto);
+                arrayProdotti[nProdotti] = prodotto;
+
+                Console.Clear();
+                arrayProdotti[nProdotti].stampaProdotto();
+                Console.ReadKey();
+                Console.Clear();
             }
             else
             {
                 Console.WriteLine("Hai raggiunto il numero massimo di prodotti registrati");
             }
             break;
-        case 1:
 
 
 
@@ -60,5 +68,5 @@ while (true)
 
 //funzioni
 
-void aggiungiProdotto ()
+//void aggiungiProdotto ()
 

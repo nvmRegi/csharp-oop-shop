@@ -25,6 +25,7 @@ namespace Csharp_Shop
             this.iva = iva;
         }
 
+
         //---GETTER CODICE e BONUS
         public string getCodice()
         {
@@ -61,6 +62,12 @@ namespace Csharp_Shop
            Console.WriteLine("Il nome esteso del prodotto è: " + getCodice() + " " + nome);
         }
 
-
+        public void stampaProdotto()
+        {
+            stampaNomeEsteso();
+            Console.WriteLine("Descrizione: " + descrizione);
+            stampaPrezzoBase();
+            calcoloIva();
+        }
     }
 }
