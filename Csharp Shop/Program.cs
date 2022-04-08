@@ -3,22 +3,17 @@
 Console.WriteLine("BENVENUTI NEL MIO PROGRAMMA!\n");
 
 int maxNumeroProdotti = 5;
-int nProdotti = 1;
+int nProdotti = 0;
 
 Prodotto[] arrayProdotti = new Prodotto[maxNumeroProdotti];
 
 Prodotto prodotto1 = new Prodotto("Panino al prosciutto", "Questa è la descrizione del mio primo prodotto" ,10, 22);
 arrayProdotti[0] = prodotto1;
 
-Console.WriteLine(prodotto1.getCodice());
-
-prodotto1.stampaPrezzoBase();
-
-prodotto1.calcoloIva();
-prodotto1.stampaNomeEsteso();
-Console.WriteLine(arrayProdotti[0].nome);
 Console.WriteLine("");
-while (true)
+
+bool esecuzione = true;
+while (esecuzione)
 {
     Console.WriteLine("Scegli un'opzione: ");
     Console.WriteLine("0 - Aggiungi un nuovo prodotto");
@@ -79,6 +74,37 @@ while (true)
             }
 
             break;
+        case 2:
+            stampaArray();
+
+            Console.Write("\nVuoi visualizzare i dettagli di un prodotto?[s/n]");
+            string scelta = Console.ReadLine();
+
+            if(scelta == "s")
+            {
+                Console.Write("\nInserire il prodotto da visualizzare: ");
+                int n = Convert.ToInt32(Console.ReadLine());
+
+                arrayProdotti[n].stampaProdotto();                    
+            }else if(scelta != "n")
+            {
+                Console.WriteLine("Opzione non valida!");
+            }
+            Console.ReadKey();
+            Console.Clear();
+            break;
+        case 3:
+            Console.WriteLine("ARRIVEDERCI!");
+
+            Console.ReadKey();
+            esecuzione = false;
+            break;
+        default:
+            Console.WriteLine("Scelta non valida!");
+            Console.ReadKey();
+            Console.Clear();
+            break;
+
 
 
     }
@@ -91,7 +117,6 @@ while (true)
 
 void stampaArray()
 {
-    Console.WriteLine("Verrà rimosso l'ultimo elemento della lista: ");
     for(int i = 0; i < nProdotti + 1; i++)
     {
         Console.WriteLine(i + " - " + arrayProdotti[i].nome);
